@@ -1,16 +1,48 @@
-import * as cdk from 'aws-cdk-lib';
-import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import events = require('aws-cdk-lib/aws-events');
+import targets = require('aws-cdk-lib/aws-events-targets');
+import lambda = require('aws-cdk-lib/aws-lambda');
+import lambdaEventSources = require('aws-cdk-lib/aws-lambda-event-sources');
+import sqs = require('aws-cdk-lib/aws-sqs');
+import cdk = require('aws-cdk-lib');
 
-export class TestCollectorStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
+export class CollectorStack extends cdk.Stack {
+  constructor(app: cdk.App, id: string) {
+    super(app, id);
 
-    // The code that defines your stack goes here
+    const sloEventBus = new events.EventBus(this, 'SLOEventBus', {
+      eventBusName: 'SLOEventBus'
+    })
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'TestCollectorQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    const collectorSqsQueue = new sqs.Queue(this, 'CollectorSqsQueue', {
+      queueName: 'CollectorSqsQueue',
+    });
+
+    const rule = new events.Rule(this, 'SLORule', { 
+      ruleName: 'SLORule',
+      description: 'Rule matching SLO events',
+      eventBus: sloEventBus ,
+      eventPattern: {      
+        source: ['SLO Generator']
+      }
+    });
+    rule.addTarget(new targets.SqsQueue(collectorSqsQueue));
+
+    const lambdaFunction = new lambda.Function(this, 'Function', {
+      code: lambda.Code.fromAsset('lib/lambda'),
+      handler: 'slo-event-handler.handler',
+      functionName: 'SqsMessageHandler',
+      runtime: lambda.Runtime.NODEJS_20_X,
+    });
+
+    const eventSource = new lambdaEventSources.SqsEventSource(collectorSqsQueue);
+
+    lambdaFunction.addEventSource(eventSource);
+
+    // rule.addTarget(new targets.LambdaFunction(lambdaFn));
+
   }
 }
+
+// const app = new cdk.App();
+// new CollectorStack(app, 'CollectorStack');
+// app.synth();
