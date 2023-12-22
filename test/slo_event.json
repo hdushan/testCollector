@@ -3,6 +3,6 @@
       "EventBusName": "SLOEventBus",
       "Source": "SLO Generator",
       "DetailType": "junk",
-      "Detail": "{\"message\":\"Hello CDK world!\"}"
+      "Detail": "{\"slo_id\":\"3\", \"slo_name\":\"activation_rate\", \"env\":\"qa\", \"event_name\":\"first-toll-beigin\",}"
     }
 ]

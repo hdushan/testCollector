@@ -22,7 +22,15 @@ export class CollectorStack extends cdk.Stack {
       description: 'Rule matching SLO events',
       eventBus: sloEventBus ,
       eventPattern: {      
-        source: ['SLO Generator']
+        source: ['SLO Generator'],
+        "detail": {
+          "slo_name": [ { "prefix": "slo" } ],
+          "slo_id": [ { "anything-but": [ "", null ] } ],
+          "event_name": [ { "anything-but": [ "", null ] } ],
+          "event_state": [ { "anything-but": [ "", null ] } ],
+          "event_type": [ { "anything-but": [ "", null ] } ],
+          "env": [[ { "exists": true  } ]
+        }
       }
     });
     rule.addTarget(new targets.SqsQueue(collectorSqsQueue));

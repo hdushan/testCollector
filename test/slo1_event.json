@@ -1,0 +1,8 @@
+[
+    {
+      "EventBusName": "SLOEventBus",
+      "Source": "SLO Generator",
+      "DetailType": "junk",
+      "Detail": "{\"referrer_service\":\"https://www.google.com/\",\"sales_channel\":\"online\",\"device_type\":\"iphone-13\",\"event_source\":\"web-funnel-frontend\",\"env\":\"Production\",\"slo_id\":1,\"slo_name\":\"funnel-conversion-rate\",\"correlation_id\":\"fbd23a6f-4e89-4306-86f6-94c5388b0426\",\"cart_id\":\"dafaf1d3-1082-4b57-af2d-3282d751a7f3\",\"iccid_valid\":true,\"service_types\":[\"mobile\"],\"referral_codes\":[],\"mobile_plan_id\":\"22033\",\"mobile_plan_name\":\"UNLIMITED 32GB\",\"mobile_plan_type\":\"unlimited\",\"cart_credit\":30,\"cart_value\":0,\"promo_codes\":[\"69EQQP\"],\"msn_type\":\"free\",\"porting\":\"transfer\",\"sim_type\":\"usim\",\"current_provider\":\"Others\",\"customer_type\":\"existing\",\"matching_addresses\":true,\"payment_method\":\"CREDIT_CARDS\",\"delivery_address_type\":\"verified\",\"billing_address_type\":\"verified\",\"idp_uuid\":\"9575d815-f6a2-40f9-8605-7b2602eccd51\",\"voucher_applied\":false}"
+    }
+]

@@ -1,0 +1,16 @@
+{
+  "messageId": "65b481b3-0804-4aa0-95fa-4f15f99a9eb4",
+  "receiptHandle": "AQEBHXS4X/52byEBvX6BhR4zH6h0ehN6DIljx8cMKJM9OHXaq3hHqkG37UFjA3pVLijoLDH50rB2LM13XfaLf7mQBwGE9lyExm3sz/b9o+9Z9aVcFjDpOR0WAv5VbBW1StN2MKjAXvrKYdFg51Q+QM8wU71GwFjgSBIaJOyjIA6FLtdyzsvxLRuOv2abya/fxhRokdPhfgB9muPpnX3qeD1v7LuMzv7qMYcOfsvR6BA/4HQEPsF3WVmOxbSrf97aWzWDff0CHZZw0JN37ysO4ORRsMB38aSQjAY2v9jwd5tEsQGZpTxdQ2ppWKeZeFENFm7bxNLzk4IX+Aa5rJtsJuAs4u9JvotpBFZa3zBr+amEYOmKU7Y/h7wL8qjMoydP1gS+CGV1jX9QvuIK5tNOKBnJqg==",
+  "body": "{\"version\":\"0\",\"id\":\"e9e5e470-f686-1a58-9a37-dd2a97858c8e\",\"detail-type\":\"junk\",\"source\":\"SLO Generator\",\"account\":\"587579738241\",\"time\":\"2023-12-22T03:43:02Z\",\"region\":\"ap-southeast-2\",\"resources\":[],\"detail\":{\"referrer_service\":\"https://www.google.com/\",\"sales_channel\":\"online\",\"device_type\":\"iphone-13\",\"event_source\":\"web-funnel-frontend\",\"env\":\"Production\",\"slo_id\":1,\"slo_name\":\"funnel-conversion-rate\",\"correlation_id\":\"fbd23a6f-4e89-4306-86f6-94c5388b0426\",\"cart_id\":\"dafaf1d3-1082-4b57-af2d-3282d751a7f3\",\"iccid_valid\":true,\"service_types\":[\"mobile\"],\"referral_codes\":[],\"mobile_plan_id\":\"22033\",\"mobile_plan_name\":\"UNLIMITED 32GB\",\"mobile_plan_type\":\"unlimited\",\"cart_credit\":30,\"cart_value\":0,\"promo_codes\":[\"69EQQP\"],\"msn_type\":\"free\",\"porting\":\"transfer\",\"sim_type\":\"usim\",\"current_provider\":\"Others\",\"customer_type\":\"existing\",\"matching_addresses\":true,\"payment_method\":\"CREDIT_CARDS\",\"delivery_address_type\":\"verified\",\"billing_address_type\":\"verified\",\"idp_uuid\":\"9575d815-f6a2-40f9-8605-7b2602eccd51\",\"voucher_applied\":false}}",
+  "attributes": {
+      "ApproximateReceiveCount": "1",
+      "SentTimestamp": "1703216582328",
+      "SenderId": "AIDAIDYJ7RPI7CT46XWPK",
+      "ApproximateFirstReceiveTimestamp": "1703216582336"
+  },
+  "messageAttributes": {},
+  "md5OfBody": "77c48acdd9ac44a5620b5ffab079be44",
+  "eventSource": "aws:sqs",
+  "eventSourceARN": "arn:aws:sqs:ap-southeast-2:587579738241:CollectorSqsQueue",
+  "awsRegion": "ap-southeast-2"
+}
