@@ -13,8 +13,16 @@ export class CollectorStack extends cdk.Stack {
       eventBusName: 'SLOEventBus'
     })
 
+    const deadLetterQueue = new sqs.Queue(this, 'CollectorDLQ', {
+      queueName: 'CollectorDLQ',
+    });
+
     const collectorSqsQueue = new sqs.Queue(this, 'CollectorSqsQueue', {
       queueName: 'CollectorSqsQueue',
+      deadLetterQueue: {
+        queue: deadLetterQueue,
+        maxReceiveCount: 2,
+      },
     });
 
     const rule = new events.Rule(this, 'SLORule', { 
@@ -24,12 +32,12 @@ export class CollectorStack extends cdk.Stack {
       eventPattern: {      
         source: ['SLO Generator'],
         "detail": {
-          "slo_name": [ { "prefix": "slo" } ],
-          "slo_id": [ { "anything-but": [ "", null ] } ],
-          "event_name": [ { "anything-but": [ "", null ] } ],
-          "event_state": [ { "anything-but": [ "", null ] } ],
-          "event_type": [ { "anything-but": [ "", null ] } ],
-          "env": [[ { "exists": true  } ]
+          "slo_name": [ {"exists": true} ],
+          "slo_id": [ {"exists": true} ],
+          "event_name": [ {"exists": true} ],
+          "event_type": [ {"exists": true} ],
+          "event_state": [ {"exists": true} ],
+          "env": [ {"exists": true} ]
         }
       }
     });
