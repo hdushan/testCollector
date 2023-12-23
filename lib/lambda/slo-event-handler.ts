@@ -3,8 +3,8 @@ import nr from 'newrelic'
 
 exports.handler = async (event: { Records: any[]; }) => {
     event.Records.forEach((record: any) => {
-      const sloEventDetails = JSON.parse(record.body)
-      const errors = validateSLOEvent(sloEventDetails.detail)
+      const sloEventDetails = JSON.parse(record.body).detail
+      const errors = validateSLOEvent(sloEventDetails)
       if (errors.length > 0) {
         const errorMessage = errors.join('\n')
         console.log('Errors: %j', errorMessage)

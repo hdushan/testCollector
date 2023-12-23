@@ -51,7 +51,7 @@ export class CollectorStack extends cdk.Stack {
 
     const lambdaFunction = new lambda.Function(this, 'Function', {
       code: lambda.Code.fromAsset('lib/lambda'),
-      handler: 'slo-event-handler.handler',
+      handler: 'newrelic-lambda-wrapper.handler',
       functionName: 'SqsMessageHandler',
       runtime: lambda.Runtime.NODEJS_20_X,
       architecture: lambda.Architecture.ARM_64,
@@ -59,7 +59,8 @@ export class CollectorStack extends cdk.Stack {
       environment: {
         NEW_RELIC_APP_NAME: 'slo-collector',
         NEW_RELIC_ACCOUNT_ID: '4294528',
-        NEW_RELIC_LICENSE_KEY: '0a1454e9c1a9dbd5c93b5b958dda94e35f66NRAL'
+        NEW_RELIC_LICENSE_KEY: '0a1454e9c1a9dbd5c93b5b958dda94e35f66NRAL',
+        NEW_RELIC_LAMBDA_HANDLER: 'slo-event-handler.handler'
       },
       timeout: cdk.Duration.seconds(30),
       tracing: lambda.Tracing.ACTIVE
