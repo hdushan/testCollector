@@ -43,19 +43,31 @@ export class CollectorStack extends cdk.Stack {
     });
     rule.addTarget(new targets.SqsQueue(collectorSqsQueue));
 
+    const newRelicLambdaLayer = lambda.LayerVersion.fromLayerVersionArn(
+      this, 
+      'NewRelicLambdaLayer', 
+      'arn:aws:lambda:ap-southeast-2:451483290750:layer:NewRelicNodeJS20XARM64:3'
+    )
+
     const lambdaFunction = new lambda.Function(this, 'Function', {
       code: lambda.Code.fromAsset('lib/lambda'),
       handler: 'slo-event-handler.handler',
       functionName: 'SqsMessageHandler',
       runtime: lambda.Runtime.NODEJS_20_X,
+      architecture: lambda.Architecture.ARM_64,
+      layers: [ newRelicLambdaLayer ],
+      environment: {
+        NEW_RELIC_APP_NAME: 'slo-collector',
+        NEW_RELIC_ACCOUNT_ID: '4294528',
+        NEW_RELIC_LICENSE_KEY: '0a1454e9c1a9dbd5c93b5b958dda94e35f66NRAL'
+      },
+      timeout: cdk.Duration.seconds(30),
+      tracing: lambda.Tracing.ACTIVE
     });
 
     const eventSource = new lambdaEventSources.SqsEventSource(collectorSqsQueue);
 
     lambdaFunction.addEventSource(eventSource);
-
-    // rule.addTarget(new targets.LambdaFunction(lambdaFn));
-
   }
 }
 
