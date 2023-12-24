@@ -23,7 +23,7 @@ export class CollectorStack extends cdk.Stack {
       targets: [ new targets.SqsQueue(sloEventCollectorQueue) ]
     })
 
-    // const lambdaFunction = new BasicFunction(this, 'Function')
+    const lambdaFunction = new BasicFunction(this, 'Function')
 
     // const sloEventBus = new events.EventBus(this, 'SLOEventBus', {
     //   eventBusName: 'SLOEventBus'
@@ -65,22 +65,22 @@ export class CollectorStack extends cdk.Stack {
     //   'arn:aws:lambda:ap-southeast-2:451483290750:layer:NewRelicNodeJS20XARM64:3'
     // )
 
-    const lambdaFunction = new lambda.Function(this, 'Function', {
-      code: lambda.Code.fromAsset('lib/lambda'),
-      handler: 'newrelic-lambda-wrapper.handler',
-      functionName: 'SqsMessageHandler',
-      runtime: lambda.Runtime.NODEJS_20_X,
-      architecture: lambda.Architecture.ARM_64,
-      layers: [ getNRLambdaLayer(this) ],
-      environment: {
-        NEW_RELIC_APP_NAME: 'slo-collector',
-        NEW_RELIC_ACCOUNT_ID: '4294528',
-        NEW_RELIC_LICENSE_KEY: '0a1454e9c1a9dbd5c93b5b958dda94e35f66NRAL',
-        NEW_RELIC_LAMBDA_HANDLER: 'slo-event-handler.handler'
-      },
-      timeout: cdk.Duration.seconds(30),
-      tracing: lambda.Tracing.ACTIVE
-    });
+    // const lambdaFunction = new lambda.Function(this, 'Function', {
+    //   code: lambda.Code.fromAsset('lib/lambda'),
+    //   handler: 'newrelic-lambda-wrapper.handler',
+    //   functionName: 'SqsMessageHandler',
+    //   runtime: lambda.Runtime.NODEJS_20_X,
+    //   architecture: lambda.Architecture.ARM_64,
+    //   layers: [ getNRLambdaLayer(this) ],
+    //   environment: {
+    //     NEW_RELIC_APP_NAME: 'slo-collector',
+    //     NEW_RELIC_ACCOUNT_ID: '4294528',
+    //     NEW_RELIC_LICENSE_KEY: '0a1454e9c1a9dbd5c93b5b958dda94e35f66NRAL',
+    //     NEW_RELIC_LAMBDA_HANDLER: 'slo-event-handler.handler'
+    //   },
+    //   timeout: cdk.Duration.seconds(30),
+    //   tracing: lambda.Tracing.ACTIVE
+    // });
 
     const eventSource = new lambdaEventSources.SqsEventSource(sloEventCollectorQueue);
 
