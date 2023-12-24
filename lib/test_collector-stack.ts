@@ -87,7 +87,3 @@ export class CollectorStack extends cdk.Stack {
     lambdaFunction.addEventSource(eventSource);
   }
 }
-
-const app = new cdk.App();
-new CollectorStack(app, 'CollectorStack');
-app.synth();
