@@ -1,0 +1,16 @@
+{
+    "messageId": "43e67132-5cc3-4728-9631-02a731302002",
+    "receiptHandle": "AQEBAISU3UmTpD+3in80ID0vbF8VGk07FE69IUhtDU0ZejgPmNPPaC3KhUJj5KJruI+1tsm+AC0x3PJOqcB35ZR7LC563ylPQ4Xf91pbq2k6esawNAJs4ks0ZWR9vDbLdH8gEDCD4O8z74yydtePiqn/5qvdtQO9RnmbD1rBKkP6rfJ7ffnZMYb3Qcuvdf5VrT3WE+k/CT++Ox1ssUj6qoy2+r5ZsUVYViqj7AJUHbpL/IjBrSHikiY/lTZ9fpHJ5RqwuJPDbkRQ7UmS2q7QctTmXbWTxuZD5D3o7U2TX4DtzUBrRu69qS3nJk+gU4Vcw/kQU1yx8XOGvcRukaOk73k/HcAaS4YN74MvEzJe76qu3oiJyapidc2AIKiHDQ7qi3XndPWPwi83VvNRsKvm7tEsRwfiH3McAgWcu+NJ00vUFFvRig8c8VrL/m66Vn8dTduc",
+    "body": "{\"version\":\"0\",\"id\":\"7e126a1f-88d3-e6b4-df64-a3734b1299d6\",\"detail-type\":\"junk\",\"source\":\"SLO Generator\",\"account\":\"587579738241\",\"time\":\"2023-12-25T08:05:44Z\",\"region\":\"ap-southeast-2\",\"resources\":[],\"detail\":{\"referrer_service\":\"https://www.google.com/\",\"sales_channel\":\"online\",\"device_type\":\"iphone-13\",\"event_source\":\"web-funnel-frontend\",\"env\":\"Junk\",\"slo_id\":1,\"slo_name\":\"funnel-conversion-rate\",\"event_name\":\"Event Name\",\"event_type\":\"Event Type\",\"event_state\":\"begin\",\"correlation_id\":\"fbd23a6f-4e89-4306-86f6-94c5388b0426\",\"cart_id\":\"dafaf1d3-1082-4b57-af2d-3282d751a7f3\",\"iccid_valid\":true,\"service_types\":[\"mobile\"],\"referral_codes\":[],\"mobile_plan_id\":\"22033\",\"mobile_plan_name\":\"UNLIMITED 32GB\",\"mobile_plan_type\":\"unlimited\",\"cart_credit\":30,\"cart_value\":0,\"promo_codes\":[\"69EQQP\"],\"msn_type\":\"free\",\"porting\":\"transfer\",\"sim_type\":\"usim\",\"current_provider\":\"Others\",\"customer_type\":\"existing\",\"matching_addresses\":true,\"payment_method\":\"CREDIT_CARDS\",\"delivery_address_type\":\"verified\",\"billing_address_type\":\"verified\",\"idp_uuid\":\"9575d815-f6a2-40f9-8605-7b2602eccd51\",\"voucher_applied\":false}}",
+    "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1703491544434",
+        "SenderId": "AIDAIDYJ7RPI7CT46XWPK",
+        "ApproximateFirstReceiveTimestamp": "1703491544441"
+    },
+    "messageAttributes": {},
+    "md5OfBody": "555e27d62ff6648ef1c353c1b0d2f576",
+    "eventSource": "aws:sqs",
+    "eventSourceARN": "arn:aws:sqs:ap-southeast-2:587579738241:TestCollectorStack-SloEventCollectorQueue",
+    "awsRegion": "ap-southeast-2"
+}

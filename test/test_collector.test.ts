@@ -1,17 +1,30 @@
-// import * as cdk from 'aws-cdk-lib';
-// import { Template } from 'aws-cdk-lib/assertions';
-// import * as TestCollector from '../lib/test_collector-stack';
+import * as cdk from 'aws-cdk-lib';
+import { Template, Match } from 'aws-cdk-lib/assertions';
+import * as TestCollector from '../lib/test_collector-stack';
 
-// example test. To run these tests, uncomment this file along with the
-// example resource in lib/test_collector-stack.ts
-test('SQS Queue Created', () => {
-//   const app = new cdk.App();
-//     // WHEN
-//   const stack = new TestCollector.TestCollectorStack(app, 'MyTestStack');
-//     // THEN
-//   const template = Template.fromStack(stack);
+test('One Event Bus created', () => {
+    const app = new cdk.App();
+    const stack = new TestCollector.CollectorStack(app, 'MyTestStack');
+  
+    const template = Template.fromStack(stack);
+  
+    template.resourceCountIs('AWS::Events::EventBus', 1);
+});
 
-//   template.hasResourceProperties('AWS::SQS::Queue', {
-//     VisibilityTimeout: 300
-//   });
+test('Two SQS Queues Created', () => {
+  const app = new cdk.App();
+  const stack = new TestCollector.CollectorStack(app, 'MyTestStack');
+
+  const template = Template.fromStack(stack);
+
+  template.resourceCountIs('AWS::SQS::Queue', 2);
+});
+
+test('One Lambda function created', () => {
+    const app = new cdk.App();
+    const stack = new TestCollector.CollectorStack(app, 'MyTestStack');
+  
+    const template = Template.fromStack(stack);
+  
+    template.resourceCountIs('AWS::Lambda::Function', 1);
 });
