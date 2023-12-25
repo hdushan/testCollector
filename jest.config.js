@@ -9,4 +9,10 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest'
   },
   verbose: true
-};
+}
+
+process.env = Object.assign(process.env, {
+  NEW_RELIC_APP_NAME: 'TEST',
+  NEW_RELIC_ACCOUNT_ID: 'TEST',
+  NEW_RELIC_LICENSE_KEY: 'TEST'
+})
